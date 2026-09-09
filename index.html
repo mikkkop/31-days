@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15112b">
+<title>31 Days — Weightlifting Challenge</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+:root{--ink:#17132f;--paper:#f4f0ff;--blue:#4d7cff;--purple:#9b5cff;--pink:#ff5ca8;--line:#d9d0f2}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 10%,#5e73ff 0,#292052 28%,#120e27 70%);color:var(--paper);font-family:'Space Mono',monospace;padding:28px 16px 50px}
+.film{max-width:1050px;margin:auto;border:4px solid var(--paper);padding:22px;position:relative;box-shadow:12px 12px 0 #0b0918,0 0 0 8px rgba(155,92,255,.35)}
+.film:before,.film:after{content:'••••  ••••  ••••  ••••  ••••';position:absolute;left:0;right:0;height:18px;overflow:hidden;letter-spacing:12px;color:#120e27;background:var(--paper);line-height:18px;font-size:15px}.film:before{top:-4px}.film:after{bottom:-4px}
+header{text-align:center;padding:38px 10px 25px;border-bottom:2px dashed var(--line)}.eyebrow{font-size:12px;letter-spacing:3px;color:#c9bcff}.title{font-family:'Archivo Black',sans-serif;font-size:clamp(38px,8vw,78px);line-height:.9;margin:12px 0;color:#fff;text-shadow:5px 5px 0 var(--purple)}.subtitle{font-size:13px;letter-spacing:1px}
+.panel{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin:25px 0;padding:18px;border:2px solid var(--line);background:rgba(255,255,255,.07)}.progress-wrap{min-width:0}.progress-text{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px;font-size:13px}.bar{height:18px;border:2px solid var(--paper);padding:2px}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));transition:.3s}.count{font-family:'Archivo Black',sans-serif;font-size:36px}.reset{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:10px 14px;font:700 11px 'Space Mono';cursor:pointer}.reset:hover{background:var(--paper);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.day{position:relative;min-height:125px;border:2px solid var(--line);background:linear-gradient(145deg,rgba(77,124,255,.22),rgba(155,92,255,.16));padding:15px;cursor:pointer;transition:.18s;overflow:hidden}.day:before{content:'TAKE';position:absolute;right:-4px;top:7px;font-size:9px;opacity:.35;transform:rotate(90deg)}.day:hover{transform:translateY(-4px);border-color:#fff;box-shadow:5px 5px 0 var(--purple)}.day.done{background:linear-gradient(145deg,#4d7cff,#8b52e8);border-color:#fff}.num{font-family:'Archivo Black',sans-serif;font-size:34px;display:block}.label{font-size:10px;letter-spacing:1px}.check{position:absolute;right:12px;bottom:12px;width:25px;height:25px;border:2px solid #fff;display:grid;place-items:center;font-weight:700}.done .check{background:#fff;color:var(--purple)}
+footer{text-align:center;padding:28px 5px 8px;font-size:11px;color:#c9bcff}.tag{display:inline-block;border:1px solid var(--line);padding:7px 10px;margin-top:8px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(3,1fr)}.panel{grid-template-columns:1fr}.count{font-size:28px}}
+@media(max-width:480px){body{padding:14px 9px}.film{padding:14px}.grid{grid-template-columns:repeat(2,1fr);gap:9px}.day{min-height:110px}.title{font-size:42px}}
+</style>
+</head>
+<body>
+<main class="film">
+<header><div class="eyebrow">ROLL 01 · 31 TAKES · NO EXCUSES</div><h1 class="title">31 DAYS<br>OF LIFTING</h1><div class="subtitle">A RETRO-MODERN WEIGHTLIFTING CHALLENGE</div></header>
+<section class="panel"><div class="progress-wrap"><div class="progress-text"><span>CHALLENGE PROGRESS</span><span id="percent">0%</span></div><div class="bar"><i id="bar"></i></div></div><div class="count"><span id="done">0</span>/31</div><button class="reset" id="reset">RESET ALL</button></section>
+<section class="grid" id="grid" aria-label="Checklist day 1 sampai 31"></section>
+<footer><div>SHOW UP · LIFT · REPEAT</div><div class="tag">☑ CHECK YOUR DAY · DATA SAVED ON THIS DEVICE</div></footer>
+</main>
+<script>
+const key='weightlifting-31-days-v1';
+let state=JSON.parse(localStorage.getItem(key)||'[]');
+const grid=document.getElementById('grid');
+function render(){grid.innerHTML='';for(let i=1;i<=31;i++){const done=state.includes(i);const card=document.createElement('button');card.className='day'+(done?' done':'');card.setAttribute('aria-label',`Day ${i} ${done?'selesai':'belum selesai'}`);card.innerHTML=`<span class="num">${String(i).padStart(2,'0')}</span><span class="label">DAY ${i}</span><span class="check">${done?'✓':''}</span>`;card.onclick=()=>toggle(i);grid.appendChild(card)}update()}
+function toggle(i){state=state.includes(i)?state.filter(x=>x!==i):[...state,i].sort((a,b)=>a-b);localStorage.setItem(key,JSON.stringify(state));render()}
+function update(){const n=state.length;document.getElementById('done').textContent=n;document.getElementById('percent').textContent=Math.round(n/31*100)+'%';document.getElementById('bar').style.width=(n/31*100)+'%'}
+document.getElementById('reset').onclick=()=>{if(confirm('Reset semua checklist Day 1–31?')){state=[];localStorage.removeItem(key);render()}};render();
+</script>
+</body>
+</html>
