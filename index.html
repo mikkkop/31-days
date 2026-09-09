@@ -13,10 +13,12 @@
 .film:before,.film:after{content:'••••  ••••  ••••  ••••  ••••';position:absolute;left:0;right:0;height:18px;overflow:hidden;letter-spacing:12px;color:#120e27;background:var(--paper);line-height:18px;font-size:15px}.film:before{top:-4px}.film:after{bottom:-4px}
 header{text-align:center;padding:38px 10px 25px;border-bottom:2px dashed var(--line)}.eyebrow{font-size:12px;letter-spacing:3px;color:#c9bcff}.title{font-family:'Archivo Black',sans-serif;font-size:clamp(38px,8vw,78px);line-height:.9;margin:12px 0;color:#fff;text-shadow:5px 5px 0 var(--purple)}.subtitle{font-size:13px;letter-spacing:1px}
 .panel{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin:25px 0;padding:18px;border:2px solid var(--line);background:rgba(255,255,255,.07)}.progress-wrap{min-width:0}.progress-text{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px;font-size:13px}.bar{height:18px;border:2px solid var(--paper);padding:2px}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));transition:.3s}.count{font-family:'Archivo Black',sans-serif;font-size:36px}.reset{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:10px 14px;font:700 11px 'Space Mono';cursor:pointer}.reset:hover{background:var(--paper);color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.day{position:relative;min-height:125px;border:2px solid var(--line);background:linear-gradient(145deg,rgba(77,124,255,.22),rgba(155,92,255,.16));padding:15px;cursor:pointer;transition:.18s;overflow:hidden}.day:before{content:'TAKE';position:absolute;right:-4px;top:7px;font-size:9px;opacity:.35;transform:rotate(90deg)}.day:hover{transform:translateY(-4px);border-color:#fff;box-shadow:5px 5px 0 var(--purple)}.day.done{background:linear-gradient(145deg,#4d7cff,#8b52e8);border-color:#fff}.num{font-family:'Archivo Black',sans-serif;font-size:34px;display:block}.label{font-size:10px;letter-spacing:1px}.check{position:absolute;right:12px;bottom:12px;width:25px;height:25px;border:2px solid #fff;display:grid;place-items:center;font-weight:700}.done .check{background:#fff;color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.day{position:relative;min-height:155px;border:2px solid var(--line);background:linear-gradient(145deg,rgba(77,124,255,.22),rgba(155,92,255,.16));padding:15px;transition:.18s;overflow:hidden}.day:before{content:'TAKE';position:absolute;right:-4px;top:7px;font-size:9px;opacity:.35;transform:rotate(90deg)}.day:hover{transform:translateY(-4px);border-color:#fff;box-shadow:5px 5px 0 var(--purple)}.day.done{background:linear-gradient(145deg,#4d7cff,#8b52e8);border-color:#fff}.num{font-family:'Archivo Black',sans-serif;font-size:34px;display:block}.label{font-size:10px;letter-spacing:1px}.check-btn{position:absolute;right:12px;bottom:12px;width:25px;height:25px;border:2px solid #fff;background:transparent;color:#fff;display:grid;place-items:center;font-weight:700;cursor:pointer;padding:0}.done .check-btn{background:#fff;color:var(--purple)}
+.note-btn{margin-top:17px;background:transparent;color:var(--paper);border:1px solid var(--line);padding:6px 8px;font:700 9px 'Space Mono';cursor:pointer;max-width:calc(100% - 42px);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.note-btn:hover{background:rgba(255,255,255,.14);border-color:#fff}.note-preview{font-size:9px;color:#e8e1ff;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 42px)}
+.modal{position:fixed;inset:0;background:rgba(8,6,20,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal.open{display:flex}.modal-box{width:min(520px,100%);background:#17132f;border:3px solid var(--paper);box-shadow:10px 10px 0 var(--purple);padding:22px}.modal-title{font-family:'Archivo Black',sans-serif;font-size:24px;margin:0 0 14px}.modal-hint{font-size:10px;color:#c9bcff;margin-bottom:10px}.note-input{width:100%;min-height:130px;resize:vertical;background:#0f0c22;color:var(--paper);border:2px solid var(--line);padding:12px;font:12px 'Space Mono';outline:none}.note-input:focus{border-color:#fff}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}.modal-actions button{padding:10px 14px;font:700 10px 'Space Mono';cursor:pointer;border:2px solid var(--paper);background:transparent;color:var(--paper)}.modal-actions .save{background:var(--paper);color:var(--ink)}
 footer{text-align:center;padding:28px 5px 8px;font-size:11px;color:#c9bcff}.tag{display:inline-block;border:1px solid var(--line);padding:7px 10px;margin-top:8px}
 @media(max-width:760px){.grid{grid-template-columns:repeat(3,1fr)}.panel{grid-template-columns:1fr}.count{font-size:28px}}
-@media(max-width:480px){body{padding:14px 9px}.film{padding:14px}.grid{grid-template-columns:repeat(2,1fr);gap:9px}.day{min-height:110px}.title{font-size:42px}}
+@media(max-width:480px){body{padding:14px 9px}.film{padding:14px}.grid{grid-template-columns:repeat(2,1fr);gap:9px}.day{min-height:145px}.title{font-size:42px}}
 </style>
 </head>
 <body>
@@ -24,16 +26,82 @@ footer{text-align:center;padding:28px 5px 8px;font-size:11px;color:#c9bcff}.tag{
 <header><div class="eyebrow">ROLL 01 · 31 TAKES · NO EXCUSES</div><h1 class="title">31 DAYS<br>OF LIFTING</h1><div class="subtitle">A RETRO-MODERN WEIGHTLIFTING CHALLENGE</div></header>
 <section class="panel"><div class="progress-wrap"><div class="progress-text"><span>CHALLENGE PROGRESS</span><span id="percent">0%</span></div><div class="bar"><i id="bar"></i></div></div><div class="count"><span id="done">0</span>/31</div><button class="reset" id="reset">RESET ALL</button></section>
 <section class="grid" id="grid" aria-label="Checklist day 1 sampai 31"></section>
-<footer><div>SHOW UP · LIFT · REPEAT</div><div class="tag">☑ CHECK YOUR DAY · DATA SAVED ON THIS DEVICE</div></footer>
+<footer><div>SHOW UP · LIFT · REPEAT</div><div class="tag">☑ CHECK YOUR DAY · NOTES SAVED ON THIS DEVICE</div></footer>
 </main>
+
+<div class="modal" id="noteModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <h2 class="modal-title" id="modalTitle">NOTE — DAY 1</h2>
+    <div class="modal-hint">Tulis catatan latihanmu, misalnya: “Lifting 30x” atau “Naik beban 5 kg”.</div>
+    <textarea class="note-input" id="noteInput" placeholder="Tulis catatan di sini..."></textarea>
+    <div class="modal-actions">
+      <button id="cancelNote">CANCEL</button>
+      <button class="save" id="saveNote">SAVE NOTE</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const key='weightlifting-31-days-v1';
+const notesKey='weightlifting-31-days-notes-v1';
 let state=JSON.parse(localStorage.getItem(key)||'[]');
+let notes=JSON.parse(localStorage.getItem(notesKey)||'{}');
+let editingDay=null;
 const grid=document.getElementById('grid');
-function render(){grid.innerHTML='';for(let i=1;i<=31;i++){const done=state.includes(i);const card=document.createElement('button');card.className='day'+(done?' done':'');card.setAttribute('aria-label',`Day ${i} ${done?'selesai':'belum selesai'}`);card.innerHTML=`<span class="num">${String(i).padStart(2,'0')}</span><span class="label">DAY ${i}</span><span class="check">${done?'✓':''}</span>`;card.onclick=()=>toggle(i);grid.appendChild(card)}update()}
-function toggle(i){state=state.includes(i)?state.filter(x=>x!==i):[...state,i].sort((a,b)=>a-b);localStorage.setItem(key,JSON.stringify(state));render()}
-function update(){const n=state.length;document.getElementById('done').textContent=n;document.getElementById('percent').textContent=Math.round(n/31*100)+'%';document.getElementById('bar').style.width=(n/31*100)+'%'}
-document.getElementById('reset').onclick=()=>{if(confirm('Reset semua checklist Day 1–31?')){state=[];localStorage.removeItem(key);render()}};render();
+const modal=document.getElementById('noteModal');
+const noteInput=document.getElementById('noteInput');
+const modalTitle=document.getElementById('modalTitle');
+
+function render(){
+  grid.innerHTML='';
+  for(let i=1;i<=31;i++){
+    const done=state.includes(i);
+    const note=notes[i]||'';
+    const card=document.createElement('div');
+    card.className='day'+(done?' done':'');
+    card.innerHTML=`<span class="num">${String(i).padStart(2,'0')}</span><span class="label">DAY ${i}</span><button class="note-btn" type="button">${note?'✎ EDIT NOTE':'＋ ADD NOTE'}</button>${note?`<div class="note-preview">${escapeHtml(note)}</div>`:''}<button class="check-btn" type="button" aria-label="Tandai Day ${i} ${done?'belum selesai':'selesai'}">${done?'✓':''}</button>`;
+    card.querySelector('.check-btn').onclick=()=>toggle(i);
+    card.querySelector('.note-btn').onclick=()=>openNote(i);
+    grid.appendChild(card);
+  }
+  update();
+}
+function toggle(i){
+  state=state.includes(i)?state.filter(x=>x!==i):[...state,i].sort((a,b)=>a-b);
+  localStorage.setItem(key,JSON.stringify(state));
+  render();
+}
+function update(){
+  const n=state.length;
+  document.getElementById('done').textContent=n;
+  document.getElementById('percent').textContent=Math.round(n/31*100)+'%';
+  document.getElementById('bar').style.width=(n/31*100)+'%';
+}
+function openNote(day){
+  editingDay=day;
+  modalTitle.textContent=`NOTE — DAY ${day}`;
+  noteInput.value=notes[day]||'';
+  modal.classList.add('open');
+  setTimeout(()=>noteInput.focus(),50);
+}
+function closeNote(){editingDay=null;modal.classList.remove('open');}
+document.getElementById('saveNote').onclick=()=>{
+  const value=noteInput.value.trim();
+  if(value) notes[editingDay]=value; else delete notes[editingDay];
+  localStorage.setItem(notesKey,JSON.stringify(notes));
+  closeNote();
+  render();
+};
+document.getElementById('cancelNote').onclick=closeNote;
+modal.addEventListener('click',e=>{if(e.target===modal)closeNote()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeNote()});
+document.getElementById('reset').onclick=()=>{
+  if(confirm('Reset semua checklist Day 1–31 dan semua notes?')){
+    state=[];notes={};localStorage.removeItem(key);localStorage.removeItem(notesKey);render();
+  }
+};
+function escapeHtml(text){const div=document.createElement('div');div.textContent=text;return div.innerHTML}
+render();
 </script>
 </body>
 </html>
